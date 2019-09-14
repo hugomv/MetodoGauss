@@ -55,7 +55,7 @@ public class EliminacaoGauss {
      */
     public void calcularMultiplicadores(){
 
-        multiplicadoresA = new int[10 - k];
+        multiplicadoresA = new int[9 - k];
         int j = 0;
         for(int i = k +1;i<10;i++){
             multiplicadoresA[j] = matrizA[i][k] / matrizA[pivo[0]][pivo[1]];
@@ -67,7 +67,12 @@ public class EliminacaoGauss {
      */
     public void multiplicarMatriz(){
 
-        return;
+        for(int i = k +1;i<10;i++){
+            for(int j = 0;j<10;j++){
+                matrizA[i][j] = matrizA[i][j] - multiplicadoresA[i] * matrizA[pivo[0]][j];
+            }
+            matrizB[i] = matrizB[i] - multiplicadoresA[i] * matrizB[pivo[0]];
+        }
     }
 
 
