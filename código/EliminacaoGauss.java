@@ -2,9 +2,7 @@ import java.util.Arrays;
 
 public class EliminacaoGauss {
 
-    public static void main(String[] args) {
-	// write your code here
-    }
+
 
     int matrizA[][] = new int[10][10];
     int matrizB[] = new int[10];
@@ -55,10 +53,11 @@ public class EliminacaoGauss {
      */
     public void calcularMultiplicadores(){
 
-        multiplicadoresA = new int[9 - k];
+        multiplicadoresA = new int[(matrizA.length-1) - k];
         int j = 0;
-        for(int i = k +1;i<10;i++){
+        for(int i = k +1;i<matrizA.length;i++){
             multiplicadoresA[j] = matrizA[i][k] / matrizA[pivo[0]][pivo[1]];
+            j++;
         }
     }
 
@@ -67,13 +66,42 @@ public class EliminacaoGauss {
      */
     public void multiplicarMatriz(){
 
-        for(int i = k +1;i<10;i++){
-            for(int j = 0;j<10;j++){
-                matrizA[i][j] = matrizA[i][j] - multiplicadoresA[i] * matrizA[pivo[0]][j];
+        for(int coluna = 0;coluna<matrizA[0].length;coluna++){
+            int m = 0;
+            for(int linha = k+1;linha<matrizA.length;linha++){
+                matrizA[linha][coluna] = matrizA[linha][coluna] - multiplicadoresA[m++] * matrizA[pivo[0]][coluna];
             }
-            matrizB[i] = matrizB[i] - multiplicadoresA[i] * matrizB[pivo[0]];
+        }
+        int l = 0;
+        for(int i = k +1;i<matrizB.length;i++) {
+            matrizB[i] = matrizB[i] - multiplicadoresA[l++] * matrizB[pivo[0]];
         }
     }
+
+    /**
+     * Retorna os valores de X
+     */
+    public int[] retornaValoresdeX(){
+        int[] valores = new int[matrizB.length];
+        for(int x : matrizB){
+                
+        }
+    }
+
+
+    /**
+     * Iterar o valor de k
+     */
+    public void iterarK(){
+
+        while(k<=matrizA.length){
+            selecionarPivo();
+            calcularMultiplicadores();
+            multiplicarMatriz();
+        }
+    }
+
+
 
 
 
