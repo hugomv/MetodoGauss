@@ -81,26 +81,13 @@ public class EliminacaoGauss {
      */
     public float[] retornaValoresdeX(){
         float[] valores = new float[matrizB.length];
-        for(int i = 0; i<matrizA.length;i++){
-            int k  = 0;
-            for(float z : matrizA[i]){
-                if(z!=0){
-                    k++;
-                }
-            int soma = 0;
-            if (k==1){
-                for(int w = 0;w<matrizA[i].length;w++){
-                    if (matrizA[i][w] !=0){
-                        valores[w] = matrizB[i] / matrizA[i][w];
-                    }
-                }
 
-            }
-            }
+        for(int i = matrizA.length-1;i>-1;i--){
+            valores[i] = (matrizB[i] - multiplicacao(matrizA[i],valores,i+1,matrizA.length-1)) / matrizA[i][i];
         }
         return valores;
     }
-    
+
 
 
     /**
@@ -116,12 +103,22 @@ public class EliminacaoGauss {
         }
     }
 
-    public float soma(float[] input){
+    private float soma(float[] input, int inicio, int fim){
+        if(inicio<0 || fim>=input.length || inicio > fim) return 0;
         float soma = 0;
-        for(int i = 0; i<input.length; i++){
-
+        for(int i = inicio; i<fim+1; i++){
+            soma =+ input[i];
         }
             return soma;
+    }
+
+    private float multiplicacao(float[] input, float[] inputB, int inicio, int fim){
+        if(inicio<0 || fim>input.length-1 || inicio > fim) return 0;
+        float multiplicacao = 0;
+        for(int i = inicio; i<fim+1; i++){
+            multiplicacao += input[i] * inputB[i];
+        }
+        return multiplicacao;
     }
 
 
