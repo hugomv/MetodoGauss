@@ -1,20 +1,18 @@
-import java.util.Arrays;
-
 public class EliminacaoGauss {
 
 
 
-    int matrizA[][] = new int[10][10];
-    int matrizB[] = new int[10];
+    float matrizA[][] = new float[10][10];
+    float matrizB[] = new float[10];
     int k = 0;
     int [] pivo = new int[2];
-    int[] multiplicadoresA;
+    float[] multiplicadoresA;
 
     /**
      * Preenche a matriz quadrada 10 X 10 dos coeficientes
      * @param matriz
      */
-    public void preencherMatrizA(int [][]matriz){
+    public void preencherMatrizA(float[][] matriz){
         matrizA = matriz;
     }
 
@@ -22,7 +20,7 @@ public class EliminacaoGauss {
      * Preenche a matriz coluna dos termos independentes.
      * @param matriz
      */
-    public void preencherMatrizB(int []matriz){
+    public void preencherMatrizB(float[] matriz){
         matrizB = matriz;
     }
 
@@ -35,8 +33,8 @@ public class EliminacaoGauss {
             pivo[1] = k;
         }else {
             //invertendo as linhas
-            int[][] auxA = matrizA;
-            int[] auxB = matrizB;
+            float[][] auxA = matrizA;
+            float[] auxB = matrizB;
 
             matrizA[k] = auxA[k+1];
             matrizA[k+1] = auxA[k];
@@ -53,7 +51,7 @@ public class EliminacaoGauss {
      */
     public void calcularMultiplicadores(){
 
-        multiplicadoresA = new int[(matrizA.length-1) - k];
+        multiplicadoresA = new float[(matrizA.length - 1) - k];
         int j = 0;
         for(int i = k +1;i<matrizA.length;i++){
             multiplicadoresA[j] = matrizA[i][k] / matrizA[pivo[0]][pivo[1]];
@@ -81,12 +79,28 @@ public class EliminacaoGauss {
     /**
      * Retorna os valores de X
      */
-    public int[] retornaValoresdeX(){
-        int[] valores = new int[matrizB.length];
-        for(int x : matrizB){
-                
+    public float[] retornaValoresdeX(){
+        float[] valores = new float[matrizB.length];
+        for(int i = 0; i<matrizA.length;i++){
+            int k  = 0;
+            for(float z : matrizA[i]){
+                if(z!=0){
+                    k++;
+                }
+            int soma = 0;
+            if (k==1){
+                for(int w = 0;w<matrizA[i].length;w++){
+                    if (matrizA[i][w] !=0){
+                        valores[w] = matrizB[i] / matrizA[i][w];
+                    }
+                }
+
+            }
+            }
         }
+        return valores;
     }
+    
 
 
     /**
@@ -94,11 +108,20 @@ public class EliminacaoGauss {
      */
     public void iterarK(){
 
-        while(k<=matrizA.length){
+        while(k<matrizA.length-1){
             selecionarPivo();
             calcularMultiplicadores();
             multiplicarMatriz();
+            k++;
         }
+    }
+
+    public float soma(float[] input){
+        float soma = 0;
+        for(int i = 0; i<input.length; i++){
+
+        }
+            return soma;
     }
 
 
