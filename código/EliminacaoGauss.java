@@ -2,8 +2,12 @@ public class EliminacaoGauss {
 
 
 
+
     float matrizA[][] = new float[10][10];
     float matrizB[] = new float[10];
+
+
+
     int k = 0;
     int [] pivo = new int[2];
     float[] multiplicadoresA;
@@ -103,6 +107,14 @@ public class EliminacaoGauss {
         }
     }
 
+    public void iterarK2(){
+
+        selecionarPivo();
+        calcularMultiplicadores();
+        multiplicarMatriz();
+        k++;
+    }
+
     private float soma(float[] input, int inicio, int fim){
         if(inicio<0 || fim>=input.length || inicio > fim) return 0;
         float soma = 0;
@@ -121,6 +133,25 @@ public class EliminacaoGauss {
         return multiplicacao;
     }
 
+    public float[][] getMatrizA() {
+        return matrizA;
+    }
+
+    public void setMatrizA(float[][] matrizA) {
+        this.matrizA = matrizA;
+    }
+
+    public float[] getMatrizB() {
+        return matrizB;
+    }
+
+    public void setMatrizB(float[] matrizB) {
+        this.matrizB = matrizB;
+    }
+
+    public int getK() {
+        return k;
+    }
 
 
 
