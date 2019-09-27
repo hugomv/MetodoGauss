@@ -86,12 +86,12 @@ public class GaussGui2 extends JPanel {
         if(eliminacaoGauss.getK()==matrizA.length-1){
             float[] resultados = eliminacaoGauss.retornaValoresdeX();
             int k = 0;
+            CampoResultados.removeAll();
             for (float i : resultados){
-                CampoResultados.append(String.format("x%d = %f \n",k,i));
+                CampoResultados.append(String.format("x%d = %.2f \n",k,i));
                 k++;
             }
 
-            //button1.setEnabled(false);
         }
 
     }
@@ -111,22 +111,27 @@ public class GaussGui2 extends JPanel {
         button1 = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
 
         //======== scrollPane1 ========
         {
 
             //---- tabelaB ----
             tabelaB.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
+            tabelaB.setFont(new Font("Tahoma", Font.PLAIN, 16));
             scrollPane1.setViewportView(tabelaB);
         }
 
         //======== scrollPane2 ========
         {
+
+            //---- tabelaA ----
+            tabelaA.setFont(new Font("Tahoma", Font.PLAIN, 16));
             scrollPane2.setViewportView(tabelaA);
         }
 
@@ -135,6 +140,7 @@ public class GaussGui2 extends JPanel {
 
             //---- CampoResultados ----
             CampoResultados.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
+            CampoResultados.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 18));
             scrollPane3.setViewportView(CampoResultados);
         }
 
@@ -149,6 +155,7 @@ public class GaussGui2 extends JPanel {
 
         //---- button1 ----
         button1.setText("Calcular");
+        button1.setFont(new Font("Tahoma", Font.PLAIN, 16));
         button1.addActionListener(e -> button1ActionPerformed(e));
 
         GroupLayout layout = new GroupLayout(this);
@@ -195,10 +202,10 @@ public class GaussGui2 extends JPanel {
                     .addGap(12, 12, 12)
                     .addComponent(label3)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(button1, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                        .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-                    .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup()
+                        .addComponent(button1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                    .addContainerGap())
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }

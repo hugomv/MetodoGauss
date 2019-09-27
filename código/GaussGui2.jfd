@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq {par l {seq t {space :p:10:p, par l {comp label1:::p::p, comp scrollPane2:::::p}, space :::p, par l {seq {space :0:0:x, comp label2:::p::p, space :0:0:x}, comp scrollPane1::t::0:x}}, seq {space :::p, comp scrollPane3:::p:452:p, space s:::p, comp button1:::p:104:p, space :0:0:x}}, space :::p}, seq l {space :::p, comp label3:::p::p, space :::x}}"
-			"$verticalGroup": "par l {seq {space :p:5:p, par b {comp label1::b:p::p, comp label2::b:p::p}, space :::p, par t {comp scrollPane2:::p:202:p, comp scrollPane1:::p:202:p}, space :p:12:p, comp label3:::p::p, space :::p, par l:::p {comp button1::::77:x, comp scrollPane3::::77:x}, space ::15:x}}"
+			"$verticalGroup": "par l {seq {space :p:5:p, par b {comp label1::b:p::p, comp label2::b:p::p}, space :::p, par t {comp scrollPane2:::p:202:p, comp scrollPane1:::p:202:p}, space :p:12:p, comp label3:::p::p, space :::p, par l {comp button1::::92:x, comp scrollPane3::::92:x}, space :::p}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -13,6 +13,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "tabelaB"
 					"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color black )
+					"font": new java.awt.Font( "Tahoma", 0, 16 )
 					auxiliary() {
 						"JavaCodeGenerator.customCreateCode": "new JTable(10,1);"
 					}
@@ -22,6 +23,7 @@ new FormModel {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "tabelaA"
+					"font": new java.awt.Font( "Tahoma", 0, 16 )
 					auxiliary() {
 						"JavaCodeGenerator.customCreateCode": "new JTable(10,10);"
 					}
@@ -32,6 +34,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "CampoResultados"
 					"border": new javax.swing.border.MatteBorder( 1, 1, 1, 1, sfield java.awt.Color black )
+					"font": new java.awt.Font( "Monospaced", 0, 18 )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -49,6 +52,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
 				"text": "Calcular"
+				"font": new java.awt.Font( "Tahoma", 0, 16 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
