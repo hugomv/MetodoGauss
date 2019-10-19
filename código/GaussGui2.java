@@ -17,7 +17,7 @@ import net.miginfocom.swing.*;
  */
 public class GaussGui2 extends JPanel {
 
-    EliminacaoGauss eliminacaoGauss = new EliminacaoGauss();
+    MetodoLU eliminacaoGauss = new MetodoLU();
     public GaussGui2() {
         initComponents();
 
@@ -93,6 +93,12 @@ public class GaussGui2 extends JPanel {
             }
 
         }
+
+        //imprimindo L
+        CampoResultados.append("Matriz L: \n");
+        CampoResultados.append(eliminacaoGauss.imprimirMatriz((eliminacaoGauss.getMatrizL())));
+
+
 
     }
 

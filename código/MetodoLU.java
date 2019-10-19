@@ -1,4 +1,6 @@
-public class EliminacaoGauss {
+import java.util.Arrays;
+
+public class MetodoLU {
 
 
 
@@ -11,7 +13,10 @@ public class EliminacaoGauss {
     int k = 0;
     int [] pivo = new int[2];
     float[] multiplicadoresA;
+
+
     float[][] matrizL;
+    float[][] matrizFinal;
 
 
 
@@ -83,14 +88,14 @@ public class EliminacaoGauss {
     public void alimentarMatrizL(){
 
         matrizL[k][k] = 1;
-
-        for(int i = 0;i<matrizL.length;i++){
-            for(int j = 0; j<matrizL[0].length;i++){
-                matrizL[i][j] = 0;
-            }
+        int j =0;
+        for(int i = k +1;i<matrizL.length;i++){
+            matrizL[i][k] = multiplicadoresA[j];
         }
 
     }
+
+
 
     /**
      * Multiplica a matriz inteira pelos multiplicadores
@@ -131,6 +136,7 @@ public class EliminacaoGauss {
         while(k<matrizA.length-1){
             selecionarPivo();
             calcularMultiplicadores();
+            alimentarMatrizL();
             multiplicarMatriz();
             k++;
         }
@@ -140,6 +146,7 @@ public class EliminacaoGauss {
 
         selecionarPivo();
         calcularMultiplicadores();
+        alimentarMatrizL();
         multiplicarMatriz();
         k++;
     }
@@ -162,6 +169,26 @@ public class EliminacaoGauss {
         return multiplicacao;
     }
 
+    private float[][] multiplyMatrices(float[][] firstMatrix, float[][] secondMatrix) {
+        float[][] result = new float[firstMatrix.length][secondMatrix[0].length];
+
+        for (int row = 0; row < result.length; row++) {
+            for (int col = 0; col < result[row].length; col++) {
+                result[row][col] = multiplyMatricesCell(firstMatrix, secondMatrix, row, col);
+            }
+        }
+
+        return result;
+    }
+
+    float multiplyMatricesCell(float[][] firstMatrix, float[][] secondMatrix, int row, int col) {
+        float cell = 0;
+        for (int i = 0; i < secondMatrix.length; i++) {
+            cell += firstMatrix[row][i] * secondMatrix[i][col];
+        }
+        return cell;
+    }
+
     public float[][] getMatrizA() {
         return matrizA;
     }
@@ -180,6 +207,27 @@ public class EliminacaoGauss {
 
     public int getK() {
         return k;
+    }
+
+    public String imprimirMatriz(float mat[][])
+    {
+        StringBuilder resultado = new StringBuilder();
+        // Loop through all rows 
+        for (float[] row : mat) {
+
+            // converting each row as string 
+            // and then prfloating in a separate line 
+            resultado.append(Arrays.toString(row));
+        }
+        return resultado.toString();
+    }
+
+    public float[][] getMatrizL() {
+        return matrizL;
+    }
+
+    public float[][] getMatrizFinal() {
+        return matrizFinal;
     }
 
 
