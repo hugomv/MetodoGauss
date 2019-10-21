@@ -92,11 +92,22 @@ public class GaussGui2 extends JPanel {
                 k++;
             }
 
+            //imprimindo L
+            CampoResultados.append("Matriz L: \n");
+            CampoResultados.append(eliminacaoGauss.imprimirMatriz((eliminacaoGauss.getMatrizL())));
+
+            //imprimindo U
+            CampoResultados.append("Matriz U: \n");
+            CampoResultados.append(eliminacaoGauss.imprimirMatriz(eliminacaoGauss.getMatrizA()));
+
+            //imprimindo L * U
+            CampoResultados.append("L x U: \n");
+            CampoResultados.append(eliminacaoGauss.imprimirMatriz(eliminacaoGauss.multiplyMatrices(
+                    eliminacaoGauss.getMatrizL(),eliminacaoGauss.getMatrizA())));
+
         }
 
-        //imprimindo L
-        CampoResultados.append("Matriz L: \n");
-        CampoResultados.append(eliminacaoGauss.imprimirMatriz((eliminacaoGauss.getMatrizL())));
+
 
 
 

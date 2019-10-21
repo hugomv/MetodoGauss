@@ -28,14 +28,17 @@ public class MetodoLU {
 
         matrizA = matriz;
 
-        matrizL = new float[matrizA.length][matrizA[0].length];
+        if((matrizL==null)){
+            matrizL = new float[matrizA.length][matrizA[0].length];
+            matrizL[matrizL.length-1][matrizL[0].length-1] = 1;
+        }
 
         //iniciando a matriz L com zeros
-        for(int i = 0;i<matrizL.length;i++){
-            for(int j = 0; j<matrizL[0].length;i++){
-                matrizL[i][j] = 0;
-            }
-        }
+//        for(int i = 0;i<matrizL.length;i++){
+//            for(int j = 0; j<matrizL[0].length;i++){
+//                matrizL[i][j] = 0;
+//            }
+//        }
     }
 
     /**
@@ -91,6 +94,7 @@ public class MetodoLU {
         int j =0;
         for(int i = k +1;i<matrizL.length;i++){
             matrizL[i][k] = multiplicadoresA[j];
+            j++;
         }
 
     }
@@ -169,7 +173,7 @@ public class MetodoLU {
         return multiplicacao;
     }
 
-    private float[][] multiplyMatrices(float[][] firstMatrix, float[][] secondMatrix) {
+    public float[][] multiplyMatrices(float[][] firstMatrix, float[][] secondMatrix) {
         float[][] result = new float[firstMatrix.length][secondMatrix[0].length];
 
         for (int row = 0; row < result.length; row++) {
@@ -181,7 +185,7 @@ public class MetodoLU {
         return result;
     }
 
-    float multiplyMatricesCell(float[][] firstMatrix, float[][] secondMatrix, int row, int col) {
+    private float multiplyMatricesCell(float[][] firstMatrix, float[][] secondMatrix, int row, int col) {
         float cell = 0;
         for (int i = 0; i < secondMatrix.length; i++) {
             cell += firstMatrix[row][i] * secondMatrix[i][col];
@@ -217,7 +221,7 @@ public class MetodoLU {
 
             // converting each row as string 
             // and then prfloating in a separate line 
-            resultado.append(Arrays.toString(row));
+            resultado.append(Arrays.toString(row) + "\n");
         }
         return resultado.toString();
     }
