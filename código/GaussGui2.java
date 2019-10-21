@@ -84,6 +84,7 @@ public class GaussGui2 extends JPanel {
 
         //imprimindo os valores de x
         if(eliminacaoGauss.getK()==matrizA.length-1){
+            button1.setEnabled(false);
             float[] resultados = eliminacaoGauss.retornaValoresdeX();
             int k = 0;
             CampoResultados.removeAll();
